@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h1= title
+    ul.star-listing
+        each item in stars
+            li
+                div.pic
+                    img(src="#{item.img}", width="200")
+                div.desc
+                    a(href="/stars/#{item.name}") #{item.name}
+                    p
+                        a(href="/delete/#{item._id}") Del

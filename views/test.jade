@@ -1,0 +1,31 @@
+extends layout
+
+block content
+	h3 #{title}
+
+	h3 欧美明星
+	each star in results.western
+		li= star.name
+
+	h3 娱乐男明星
+	each star in results.e_males
+		li= star.name
+
+	h3 娱乐女明星
+	each star in results.e_females
+		li= star.name
+
+	h3 男歌手
+	each star in results.s_males
+		li= star.name
+
+	h3 女歌手
+	each star in results.s_females
+		li
+			img(src="#{star.img}", width="50")
+			| #{star.name}
+
+	h3 模特
+	each star in results.models
+		li= star.name
+

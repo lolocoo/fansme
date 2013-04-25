@@ -1,0 +1,59 @@
+extends layout
+
+block content
+	div.container
+		h1= title
+		form.form-horizontal(action="/add", method="post")
+			div.control-group
+				label.control-label 图片
+				div.controls
+					input(type="text", name="image", placeholder="图片").span4
+
+			div.control-group
+				label.control-label 昵称
+				div.controls
+					input(type="text", name="nick_name", placeholder="昵称").span4
+
+			div.control-group
+				label.control-label 性别
+				div.controls
+					input(type="text", name="gender", placeholder="性别").span4
+
+			div.control-group
+				label.control-label 职业
+				div.controls
+					input(type="text", name="career", placeholder="职业").span4
+
+			div.control-group
+				label.control-label 国籍
+				div.controls
+					input(type="text", name="nationality", placeholder="国籍").span4
+
+			div.control-group
+				label.control-label 星座
+				div.controls
+					input(type="text", name="astrology", placeholder="星座").span4
+
+			div.control-group
+				label.control-label 身高
+				div.controls
+					input(type="text", name="height", placeholder="身高").span4
+
+			div.control-group
+				label.control-label 体重
+				div.controls
+					input(type="text", name="weight", placeholder="体重").span4
+
+			div.control-group
+				label.control-label 三维
+				div.controls
+					input(type="text", name="d3", placeholder="三维").span4
+
+			div.control-group
+				label.control-label 评分
+				div.controls
+					input(type="text", name="rate", placeholder="评分").span4
+
+			div.control-group
+				div.controls
+					input.btn.btn-primary(type="submit", value="提交")
