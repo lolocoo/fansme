@@ -8,14 +8,43 @@ var Star = mongoose.model('Star');
 var Todo = mongoose.model('Todo');
 
 exports.index = function (req, res) {
-    Star.find()
-        .limit(100)
-        .exec(function (err, stars) {
-            res.render('index', {
-                title: 'The Fans Me',
-                stars: stars
-            });
+    // Star.find()
+    //     .limit(100)
+    //     .exec(function (err, stars) {
+    //         res.render('index', {
+    //             title: 'The Fans Me',
+    //             stars: stars
+    //         });
+    //     });
+
+    async.parallel({
+        western : function(cb) {
+            Star.find({ area : '欧美'}).limit(10).exec(cb);
+        },
+        e_males : function(cb) {
+            Star.find({ career : '演员', gender: '男'}).limit(10).exec(cb);
+        },
+        e_females : function(cb) {
+            Star.find({ career : '演员', gender: '女'}).limit(10).exec(cb);
+        },
+        s_males : function(cb) {
+            Star.find({ career : '歌手', gender: '男'}).limit(10).exec(cb);
+        },
+        s_females : function(cb) {
+            Star.find({ career : '歌手', gender: '女'}).limit(10).exec(cb);
+        },
+        models : function(cb) {
+            Star.find({ career : '模特'}).limit(10).exec(cb);
+        },
+
+    },
+    function(err, results){
+        console.log(results.one);
+        res.render('test', {
+            title : 'The Fans Me - home',
+            results : results
         });
+    });
 };
 exports.add = function (req, res) {
     if (req.method === 'GET') {
@@ -59,6 +88,20 @@ exports.upload = function (req, res) {
     res.render('upload', {
         title: 'upload'
     });
+}
+
+exports.female = function(req, res) {
+    Star.find({ gender: '女' })
+        .skip(50*parseInt(req.query.p, 10))
+        .limit(50)
+        .exec(function(err, stars){
+            console.log(req.params.type);
+            res.render('female', {
+                title : '全部女星',
+                female_stars : stars,
+                req : req
+            });
+        });
 }
 exports.listing = function (req, res) {
     async.parallel({

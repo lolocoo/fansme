@@ -38,6 +38,7 @@ app.get('/stars/:name', routes.stars);
 
 app.get('/todo', routes.todos);
 app.get('/listing', routes.listing);
+app.get('/:type', routes.female);
 
 app.get('/upload', routes.upload);
 app.post('/upload', function(req, res, next){

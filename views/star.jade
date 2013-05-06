@@ -2,6 +2,23 @@ extends layout
 
 block content
 	div.container
-		img(src="#{star.img}")
-		p 
-			| #{star.name}
+		.star-detail
+			.photo
+				img(src="#{star.img}")
+			.info
+				h1 #{star.name}
+				ul
+					li
+						国籍 ：#{star.nationality}
+					li
+						生日 ：#{star.birth}
+					li
+						星座 ：#{star.astrology}
+					li
+						血腥 ：#{star.blood}
+					li
+						身高 ：#{star.height}
+					li
+						体重 ：#{star.weight}
+					li
+						评分 ：#{star.rate}

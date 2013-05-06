@@ -7,11 +7,27 @@ html
     link(rel='stylesheet', href='/stylesheets/docs.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    div.nav.navbar-inverse.navbar-fixed-top
-        div.navbar-inner
-            div.container
-                a.brand(href="/") Bootstrap
-    div.container
-        block content
+    .navbar.navbar-fixed-top
+        .navbar-inner
+            .container
+                a.brand(href="/") FansMe
+                .nav-collapse.collapse
+                    .nav
+                        li 
+                            a(href="/") 首页
+                        li
+                            a(href="/male") 男明星
+                        li
+                            a(href="/female") 女明星
+                        li
+                            a(href="#") 港台
+                        li
+                            a(href="#") 大陆
+                        li
+                            a(href="#") 欧美
+    .container
+        .row
+            .span12
+                block content
 
     

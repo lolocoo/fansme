@@ -12,7 +12,7 @@
 
 body {
   position: relative;
-  padding-top: 40px;
+  padding-top: 60px;
 }
 
 /* Code in headings */
@@ -27,17 +27,17 @@ h3 code {
 -------------------------------------------------- */
 
 body > .navbar {
-  font-size: 13px;
+  font-size: 16px;
 }
 
 /* Change the docs' brand */
 body > .navbar .brand {
   padding-right: 0;
   padding-left: 0;
-  margin-left: 20px;
-  float: right;
+  margin-left: 0;
   font-weight: bold;
-  color: #000;
+  font-size: 34px;
+  color: #f09;
   text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
   -webkit-transition: all .2s linear;
      -moz-transition: all .2s linear;
@@ -47,7 +47,9 @@ body > .navbar .brand:hover {
   text-decoration: none;
   text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
 }
-
+.navbar .nav > li > a {
+  padding: 20px 15px 20px;
+}
 
 /* Sections
 -------------------------------------------------- */
