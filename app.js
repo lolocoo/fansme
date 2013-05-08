@@ -38,7 +38,10 @@ app.get('/stars/:name', routes.stars);
 
 app.get('/todo', routes.todos);
 app.get('/listing', routes.listing);
-app.get('/:type', routes.female);
+app.get('/star/:type', routes.female);
+app.get('/product_listing', routes.product_listing);
+app.get('/product/upload', routes.show_product_upload);
+app.post('/product/upload', routes.product_upload);
 
 app.get('/upload', routes.upload);
 app.post('/upload', function(req, res, next){

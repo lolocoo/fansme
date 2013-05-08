@@ -21,9 +21,18 @@ var StarSchema = new Schema({
     rate :        { type : Number, default: 0 }
 });
 
+var ProductSchema = new Schema({
+    name       : String,
+    img_url    : String,
+    taobao_url : String,
+    desc       : String,
+    rate       : { type: Number, default: 0 }
+});
+
 var TodoSchema = new Schema({
     title : { type : String }
 });
 
 mongoose.model('Star', StarSchema);
+mongoose.model('Product', ProductSchema);
 mongoose.model('Todo', TodoSchema);

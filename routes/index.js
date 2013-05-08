@@ -6,17 +6,9 @@ var async = require('async');
 var mongoose = require('mongoose');
 var Star = mongoose.model('Star');
 var Todo = mongoose.model('Todo');
+var Product = mongoose.model('Product');
 
 exports.index = function (req, res) {
-    // Star.find()
-    //     .limit(100)
-    //     .exec(function (err, stars) {
-    //         res.render('index', {
-    //             title: 'The Fans Me',
-    //             stars: stars
-    //         });
-    //     });
-
     async.parallel({
         western : function(cb) {
             Star.find({ area : '欧美'}).limit(10).exec(cb);
@@ -35,8 +27,7 @@ exports.index = function (req, res) {
         },
         models : function(cb) {
             Star.find({ career : '模特'}).limit(10).exec(cb);
-        },
-
+        }
     },
     function(err, results){
         console.log(results.one);
@@ -46,6 +37,7 @@ exports.index = function (req, res) {
         });
     });
 };
+
 exports.add = function (req, res) {
     if (req.method === 'GET') {
         res.render('add', {
@@ -57,24 +49,26 @@ exports.add = function (req, res) {
             nick_name: '苍井空',
             rate: 1
         }).save(function (err) {
-                res.redirect('/');
-            });
+            res.redirect('/');
+        });
     }
-
 };
+
 exports.todos = function (req, res) {
     Star.find().limit(10).exec(function(err, stars){
         Todo.find(function(err ,todos){
             res.send([stars, todos]);
         });
     });
-}
+};
+
 exports.delete = function (req, res) {
     //res.send(req.params.id);
     Star.remove({ _id: req.params.id}, function (err) {
         res.redirect('/');
     });
-}
+};
+
 exports.stars = function (req, res) {
     Star.findOne({ name: req.params.name })
         .exec(function (err, star) {
@@ -83,12 +77,13 @@ exports.stars = function (req, res) {
                 star: star
             });
         });
-}
+};
+
 exports.upload = function (req, res) {
     res.render('upload', {
         title: 'upload'
     });
-}
+};
 
 exports.female = function(req, res) {
     Star.find({ gender: '女' })
@@ -102,7 +97,8 @@ exports.female = function(req, res) {
                 req : req
             });
         });
-}
+};
+
 exports.listing = function (req, res) {
     async.parallel({
         western : function(cb) {
@@ -132,4 +128,31 @@ exports.listing = function (req, res) {
             results : results
         });
     });
-}
+};
+
+exports.product_listing = function(req, res){
+    Product.find()
+    .exec(function(err, docs){
+        res.render('product_listing', {
+            title: 'product listing',
+            products : docs
+        });
+    });
+};
+
+exports.show_product_upload = function(req, res){
+    res.render('product_upload', {
+        title : '上传商品'
+    });
+};
+
+exports.product_upload = function(req, res){
+    new Product({
+        name       : req.body.p_name,
+        img_url    : req.body.p_img_url,
+        taobao_url : req.body.p_taobao_url,
+        desc       : req.body.p_desc
+    }).save(function(err){
+        res.redirect('/product_listing');
+    });
+};

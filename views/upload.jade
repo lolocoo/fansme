@@ -1,8 +1,7 @@
 extends layout
 
 block content
-	div.container
-		form.form-horizontal(action="/upload", enctype="multipart/form-data", method="post")
-			input(type="file", name="thumbnail")
-			
-			input.btn.btn-primary(type="submit", value="提交")
+    div.container
+        form.form-horizontal(action="/upload", enctype="multipart/form-data", method="post")
+            input(type="file", name="thumbnail")
+            input.btn.btn-primary(type="submit", value="提交")

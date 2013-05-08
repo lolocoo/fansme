@@ -1,0 +1,15 @@
+//
+   Created with JetBrains WebStorm.
+   User: lolocoo
+   Date: 13-5-8
+   Time: PM11:10
+   To change this template use File | Settings | File Templates.
+
+extends layout
+
+block content
+    a(href="/product/upload/") upload product
+    - each p in products
+        p= p.name
+        a(href="#{p.taobao_url}")
+            img(src="#{p.img_url}")

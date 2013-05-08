@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    p #{req.params.type}
+    p #{req.query.p*50}
+
+
+    include paging
+    h3 全部女明星
+    ul.top-list
+        each star in female_stars
+            li
+                .photo
+                    img(src="#{star.img}", width="150")
+                a(href="/stars/#{star.name}")
+                    span.name #{star.name}

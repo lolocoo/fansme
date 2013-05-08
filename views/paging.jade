@@ -1,0 +1,8 @@
+-if(isNaN(req.query.p) || req.query.p<=0)
+  a(href="/#{req.params.type}?p=1") Next
+-else
+  a(href="/#{req.params.type}?p=#{req.query.p-1}") Prev
+  a(href="/#{req.params.type}?p=#{+req.query.p+1}") Next
+  
+
+    
