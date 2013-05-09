@@ -4,21 +4,22 @@ var Schema = mongoose.Schema;
 mongoose.connect('mongodb://roc:8233375@widmore.mongohq.com:10000/stars');
 
 var StarSchema = new Schema({
-    id :          { type : Number },
-    img :         { type : String },
-    name :        { type : String },
-    nick_name :   { type : String },
-    gender :      { type : String },
-    career :      { type : String },
+    id          : { type : Number },
+    img         : { type : String },
+    name        : { type : String },
+    nick_name   : { type : String },
+    gender      : { type : String },
+    career      : { type : String },
     nationality : { type : String },
-    area :        { type : String },
-    birth :       { type : String },
-    astrology :   { type : String },
-    height :      { type : String },
-    weight :      { type : String },
-    blood :       { type : String },
-    d3 :          { type : String },
-    rate :        { type : Number, default: 0 }
+    area        : { type : String },
+    birth       : { type : String },
+    astrology   : { type : String },
+    height      : { type : String },
+    weight      : { type : String },
+    blood       : { type : String },
+    d3          : { type : String },
+    product     : { type : Array  },
+    rate        : { type : Number, default: 0 }
 });
 
 var ProductSchema = new Schema({
@@ -26,6 +27,7 @@ var ProductSchema = new Schema({
     img_url    : String,
     taobao_url : String,
     desc       : String,
+    star       : Array,
     rate       : { type: Number, default: 0 }
 });
 
