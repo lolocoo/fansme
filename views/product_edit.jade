@@ -1,0 +1,27 @@
+//
+   Created with JetBrains WebStorm.
+   User: lolocoo
+   Date: 13-5-7
+   Time: PM10:17
+   To change this template use File | Settings | File Templates.
+
+extends layout
+
+block content
+    form(action="/product/edit/#{product._id}", method="post")
+        fieldset
+            legend= title
+            label 商品名称
+            input(type="text", name="p_name", class="span6", value="#{product.name}")
+            label 图片地址
+            input(type="text", name="p_img_url", class="span6", value="#{product.img_url}")
+            label 商品地址
+            input(type="text", name="p_taobao_url", class="span6", value="#{product.taobao_url}")
+            label 对应明星
+            input(type="text", name="p_star", class="span6", value="#{product.star}")
+            label 描述
+            textarea(name="p_desc", class="span6") #{product.desc}
+              
+            input(type="hidden", name="pid" ,value="#{product._id}")
+            p
+                input.btn.btn-primary(type="submit", value="提交")

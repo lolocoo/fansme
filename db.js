@@ -27,7 +27,7 @@ var ProductSchema = new Schema({
     img_url    : String,
     taobao_url : String,
     desc       : String,
-    star       : Array,
+    star       : [],
     rate       : { type: Number, default: 0 }
 });
 

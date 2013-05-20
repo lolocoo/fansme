@@ -1,8 +1,6 @@
--if(isNaN(req.query.p) || req.query.p<=0)
-  a(href="/#{req.params.type}?p=1") Next
--else
-  a(href="/#{req.params.type}?p=#{req.query.p-1}") Prev
-  a(href="/#{req.params.type}?p=#{+req.query.p+1}") Next
-  
-
-    
+.paging
+  -if(isNaN(req.query.p) || req.query.p<=0)
+    a.next(href="/star/#{req.params.type}?p=1") >
+  -else
+    a.pre(href="/star/#{req.params.type}?p=#{req.query.p-1}") <
+    a.next(href="/star/#{req.params.type}?p=#{+req.query.p+1}") >

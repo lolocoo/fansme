@@ -38,8 +38,12 @@ app.get('/stars/:name', routes.stars);
 
 app.get('/todo', routes.todos);
 app.get('/listing', routes.listing);
-app.get('/star/:type', routes.female);
+app.get('/star/:type', routes.star_cate);
 app.get('/product_listing', routes.product_listing);
+app.get('/product/', routes.products);
+app.get('/product/delete/:id', routes.product_delete);
+app.get('/product/edit/:id', routes.product_edit);
+app.post('/product/edit/:id', routes.product_update);
 app.get('/product/upload', routes.show_product_upload);
 app.post('/product/upload', routes.product_upload);
 

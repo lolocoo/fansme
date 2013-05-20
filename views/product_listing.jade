@@ -8,8 +8,12 @@
 extends layout
 
 block content
-    a(href="/product/upload/") upload product
+    a.btn.btn-primary(href="/product/upload/") upload product
     - each p in products
-        p= p.name
+        p
+          a(href="product/?q=#{p._id}") #{p.name}
+        p= p.star
         a(href="#{p.taobao_url}")
             img(src="#{p.img_url}")
+        a.btn(href="/product/delete/#{p._id}") DEL
+        a.btn(href="/product/edit/#{p._id}") Edit
